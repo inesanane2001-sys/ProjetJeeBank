@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Création de Carte Bancaire</title>
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f5f7fa;
+          padding: 40px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .form-container {
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 30px;
+          width: 100%;
+          max-width: 800px;
+        }
+
+        h1 {
+          color: #2c3e50;
+          text-align: center;
+          margin-bottom: 30px;
+          font-size: 28px;
+        }
+
+        .form-table {
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0 15px;
+        }
+
+        .form-table td {
+          padding: 0 10px;
+          vertical-align: top;
+        }
+
+        input, select {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          font-size: 14px;
+          transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+          border-color: #4CAF50;
+          box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+          outline: none;
+        }
+
+        input[type="email"]::placeholder {
+          color: #aaa;
+        }
+
+        button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          padding: 12px 25px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 15px;
+          transition: all 0.3s;
+          white-space: nowrap;
+          margin-top: 25px;
+        }
+
+        button:hover {
+          background-color: #3e8e41;
+          transform: translateY(-2px);
+        }
+
+        .input-label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 600;
+          color: #555;
+          font-size: 14px;
+        }
+
+        .button-cell {
+          vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h1>Nouveau Carte Bancaire</h1>
+
+    <form th:action="@{/cartes/submit}" method="post">
+        <!-- Hidden field to send carteName -->
+        <input type="hidden" name="carteNumber" th:value="${carteNumber}">
+        <input type="hidden" name="clientId" th:value="${clientId}">
+        <table class="form-table">
+            <tr>
+                <td>
+                    <label class="input-label">Numéro de carte: </label>
+                    <td th:text="${carteNumber}"></td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="input-label">Type de carte</label>
+                    <select name="type" required>
+                        <option value="" disabled selected>Sélectionnez</option>
+                        <option th:each="t : ${typesCarte}"
+                                th:value="${t}"
+                                th:text="${t}">
+                        </option>
+                    </select>
+                </td>
+                <td></td>
+                <td>
+                    <label class="input-label">Compte bancaire</label>
+                    <select id="accountSelect" name="accountId" class="form-control" required >
+                        <option value="" disabled selected>Sélectionnez un compte</option>
+                        <option th:each="account : ${accounts}"
+                                th:value="${account.id}"
+                                th:text="${account.accountNumber}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button-cell" style="text-align: center;">
+                    <button type="submit">Enregistrer</button>
+                    <a href="/clients" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Annuler
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

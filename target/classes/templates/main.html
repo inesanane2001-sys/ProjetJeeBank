@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/css/css/style.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-success" href="#">BankApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/cartes}">Cards</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/operationss}">Operations</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/comptes}">Accounts</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/credits}">Credits</a></li>
+                <form th:action="@{/logout}" method="post" onsubmit="return confirmLogout();">
+                    <button type="submit" class="nav-link text-danger" style="border: none; background: none;">Logout</button>
+                </form>
+
+                <script>
+                    function confirmLogout() {
+                        return confirm("Are you sure you want to logout?");
+                    }
+                </script>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1>Bienvenue dans l'application bancaire</h1>
+    <div class="buttons">
+        <a href="/cartes" class="button">Cartes</a>
+        <a href="/comptes" class="button">Comptes</a>
+        <a href="/credits" class="button">Crédits</a>
+        <a href="/operationss" class="button">Opérations</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demande de crédit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f7f7; /* Fond gris clair */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #6c757d; /* Gris doux */
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-label {
+            color: #495057; /* Gris foncé pour le texte */
+        }
+
+        .btn-primary {
+            background-color: #4caf50; /* Vert doux */
+            border-color: #4caf50;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049; /* Vert légèrement plus foncé */
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0; /* Gris très clair */
+            border-color: #f0f0f0;
+            color: #495057;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #dcdcdc; /* Gris clair au survol */
+        }
+
+        .alert-danger {
+            background-color: #ffcccc; /* Rouge doux pour les erreurs */
+            border-color: #ff6666;
+            color: #990000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h3 class="mb-0">Demande de crédit</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/credits/save}" th:object="${credit}" method="post">
+                        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email"
+                                   th:field="*{email}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="accountNumber" class="form-label">Numéro de compte</label>
+                            <input type="text" class="form-control" id="accountNumber"
+                                   th:field="*{accountNumber}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="salary" class="form-label">Salaire mensuel (€)</label>
+                            <input type="number" step="0.01" class="form-control" id="salary"
+                                   th:field="*{salary}" required>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Soumettre la demande</button>
+                            <a href="/clients"  class="btn btn-secondary">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

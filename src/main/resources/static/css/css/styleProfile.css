@@ -1,0 +1,110 @@
+
+/* General Styles */
+body {
+    background: linear-gradient(to right, #003366, #0066cc);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 43, 94, 0.9);
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: #28a745 !important;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #28a745 !important;
+}
+
+/* Profile Container */
+.container {
+    margin-top: 50px;
+    max-width: 900px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 24px;
+    text-align: center;
+    color: #28a745;
+}
+
+/* Profile Image */
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #28a745;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* User Info List */
+.list-group-item {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 12px;
+}
+
+/* Buttons */
+.btn-primary, .btn-warning {
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    transform: scale(1.05);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107, #d39e00);
+    border: none;
+    color: black;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #d39e00, #a67c00);
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+}

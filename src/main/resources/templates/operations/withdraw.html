@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Retrait</title>
+  <style>
+    .form-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .btn {
+      padding: 8px 15px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h1>Retrait du compte: <span th:text="${account.accountNumber}"></span></h1>
+  <p>Solde disponible: <strong th:text="${account.balance}"></strong></p>
+
+  <div th:if="${error}" style="color:red;" th:text="${error}"></div>
+
+  <form th:action="@{/operations/withdraw}" method="post">
+    <input type="hidden" name="accountId" th:value="${account.id}">
+
+    <div class="form-group">
+      <label>Montant :</label>
+      <input type="number" name="amount" step="0.01" min="0.01" th:max="${account.balance}" required class="form-control">
+    </div>
+
+    <button type="submit" class="btn">Retirer</button>
+    <a th:href="@{/operations/history(accountId=${account.id})}" style="margin-left:10px;">Annuler</a>
+  </form>
+</div>
+</body>
+</html>

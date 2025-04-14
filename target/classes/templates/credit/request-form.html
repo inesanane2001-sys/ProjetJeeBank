@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demande de crédit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .credit-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .form-header {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="credit-form">
+        <h2 class="form-header text-center">
+            <i class="bi bi-cash-stack"></i> Demande de crédit
+        </h2>
+
+        <form th:action="@{/credits/submit}" th:object="${credit}" method="post">
+
+
+            <input type="hidden" name="clientId" th:value="${clientId}">
+            <div class="mb-3">
+                <label class="input-label">Compte bancaire</label>
+                <select id="accountSelect" name="accountId" class="form-control" required >
+                    <option value="" disabled selected>Sélectionnez d'abord un client</option>
+                    <option th:each="account : ${accounts}"
+                            th:value="${account.id}"
+                            th:text="${account.accountNumber }">
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="salary" class="form-label">Salaire mensuel (€)</label>
+                <div class="input-group">
+                    <span class="input-group-text">€</span>
+                    <input type="number" step="0.01" min="0" class="form-control"
+                           id="salary" th:field="*{salary}" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="salary" class="form-label">Montant demandé (€)</label>
+                <div class="input-group">
+                    <span class="input-group-text">€</span>
+                    <input type="number" step="0.01" min="0" class="form-control"
+                           id="amountRequested" th:field="*{amountRequested}" required>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send"></i> Soumettre la demande
+                </button>
+                <a href="/clients" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Annuler
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</body>
+</html>

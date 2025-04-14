@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Client Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #fdfdfe;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .page-header {
+      background-color: #e3f2fd;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .page-header h2 {
+      margin: 0;
+      font-weight: 600;
+      color: #0d47a1;
+    }
+
+    .btn-soft-primary {
+      background-color: #bbdefb;
+      color: #0d47a1;
+      border: none;
+    }
+
+    .btn-soft-primary:hover {
+      background-color: #90caf9;
+      color: #0d47a1;
+    }
+
+    .btn-soft-green {
+      background-color: #c8e6c9;
+      color: #1b5e20;
+    }
+
+    .btn-soft-green:hover {
+      background-color: #a5d6a7;
+    }
+
+    .card-custom {
+      background-color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .table thead {
+      background-color: #e0f7fa;
+      color: #006064;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #f1f8ff;
+    }
+
+    .btn i {
+      margin-right: 4px;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="container py-5">
+  <div class="page-header d-flex justify-content-between align-items-center flex-wrap">
+    <h2><i class="fas fa-user-friends me-2"></i>Gestion des Clients</h2>
+    <div>
+      <a th:href="@{/clients/new}" class="btn btn-soft-green me-2">
+        <i class="fas fa-plus"></i> Nouveau
+      </a>
+      <a th:href="@{/credits/history}" class="btn btn-soft-primary">
+        <i class="fas fa-file-invoice-dollar"></i> Historique crédits
+      </a>
+    </div>
+  </div>
+
+  <div class="card card-custom">
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th class="text-end">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="client : ${clients}">
+            <td th:text="${client.id}"></td>
+            <td th:text="${client.firstName}"></td>
+            <td th:text="${client.lastName}"></td>
+            <td th:text="${client.email}"></td>
+            <td th:text="${client.phone}"></td>
+            <td class="text-end">
+              <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="btn btn-outline-primary btn-sm me-1">
+                <i class="fas fa-pen"></i> Modifier
+              </a>
+              <a th:href="@{/clients/{id}/delete(id=${client.id})}" class="btn btn-outline-danger btn-sm me-1"
+                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">
+                <i class="fas fa-trash"></i> Supprimer
+              </a>
+              <a th:href="@{/accounts(id=${client.id})}" class="btn btn-soft-primary btn-sm me-1">
+                <i class="fas fa-wallet"></i> Comptes
+              </a>
+              <a th:href="@{/cartes(id=${client.id})}" class="btn btn-soft-primary btn-sm me-1">
+                <i class="fas fa-credit-card"></i> Cartes
+              </a>
+              <a th:href="@{/credits/request(id=${client.id})}" class="btn btn-soft-green btn-sm">
+                <i class="fas fa-coins"></i> Crédit
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

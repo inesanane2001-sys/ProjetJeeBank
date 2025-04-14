@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Historique des crédits</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f6fbff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      color: #0077b6;
+      font-weight: bold;
+    }
+
+    .table th {
+      background-color: #dbeeff;
+      color: #003049;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #f1f9ff;
+    }
+
+    .badge.bg-warning {
+      background-color: #ffe082 !important;
+      color: #5f370e;
+    }
+
+    .badge.bg-success {
+      background-color: #b9fbc0 !important;
+      color: #1b4332;
+    }
+
+    .badge.bg-danger {
+      background-color: #ffc9c9 !important;
+      color: #7b2d2d;
+    }
+
+    .btn-primary {
+      background-color: #74c0fc;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #4dabf7;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="mb-4">
+    <i class="bi bi-clock-history me-2"></i> Historique des demandes de crédit
+  </h2>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <table class="table table-hover table-striped align-middle">
+        <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Compte</th>
+          <th>Montant</th>
+          <th>Salaire</th>
+          <th>Date</th>
+          <th>Statut</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="credit : ${credits}">
+          <td th:text="${credit.id}"></td>
+          <td th:text="${credit.accountNumber}"></td>
+          <td th:text="${credit.amountRequested} + ' €'"></td>
+          <td th:text="${credit.salary} + ' €'"></td>
+          <td th:text="${#temporals.format(credit.requestDate, 'dd/MM/yyyy HH:mm')}"></td>
+          <td>
+            <span th:if="${credit.status.toString() == 'PENDING'}" class="badge bg-warning">En attente</span>
+            <span th:if="${credit.status.toString() == 'APPROVED'}" class="badge bg-success">Approuvé</span>
+            <span th:if="${credit.status.toString() == 'REJECTED'}" class="badge bg-danger">Rejeté</span>
+          </td>
+          <td>
+            <a th:if="${credit.status.toString() == 'PENDING'}"
+               th:href="@{/credits/{id}/approve(id=${credit.id})}"
+               class="btn btn-sm btn-success">Approuver</a>
+            <a th:if="${credit.status.toString() == 'PENDING'}"
+               th:href="@{/credits/{id}/reject(id=${credit.id})}"
+               class="btn btn-sm btn-danger">Rejeter</a>
+          </td>
+        </tr>
+        <tr th:if="${credits.empty}">
+          <td colspan="5" class="text-center text-muted">Aucune demande de crédit trouvée</td>
+        </tr>
+        </tbody>
+      </table>
+
+            <!-- Bouton de nouvelle demande -->
+            <a href="/clients" class="btn btn-primary mt-3">
+              <i class="bi bi-plus-circle me-1"></i> Retour en acceuil
+            </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

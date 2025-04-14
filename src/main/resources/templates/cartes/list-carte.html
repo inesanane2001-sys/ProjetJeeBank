@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des comptes bancaires</title>
+  <style>
+    body {
+      background-color: #f4f6f9; /* Couleur de fond gris très clair */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #495057; /* Gris foncé doux */
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #ffffff; /* Fond blanc pour la section principale */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2c3e50; /* Bleu-gris foncé */
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 400;
+      border-bottom: 2px solid #3498db; /* Ligne sous le titre */
+      padding-bottom: 10px;
+    }
+
+    .success-message {
+      color: #155724;
+      background-color: #d4edda;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin: 20px 0;
+      border: 1px solid #c3e6cb;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .success-message i {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: collapse;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #3498db; /* Bleu doux */
+      color: #ffffff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f3f5;
+    }
+
+    .action-link {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .action-link:hover {
+      color: #fff;
+      background-color: #3498db;
+      text-decoration: none;
+    }
+
+    .create-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #2ecc71;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .create-link:hover {
+      background-color: #27ae60;
+      text-decoration: none;
+    }
+
+    .create-link i {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Gestion des cartes bancaires</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numéro de compte</th>
+      <th>Numéro de carte</th>
+      <th>Type de carte</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="carte : ${cartes}">
+      <td th:text="${carte.id}"></td>
+      <td th:text="${carte.accountNumber}"></td>
+      <td th:text="${carte.carteNumber}"></td>
+      <td th:text="${carte.type}"></td>
+
+    </tr>
+    <tr th:if="${cartes.empty}">
+      <td colspan="4" style="text-align: center; color: #6c757d;">
+        Aucun compte trouvé
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{/cartes/add(clientId=${clientId})}" class="create-link">
+    <i class="fas fa-plus"></i> Créer une nouvelle carte
+  </a>
+  <a th:href="@{/clients}" class="create-link">
+<!--    <i class="fas fa-plus"></i> -->
+retourne à la liste de client
+  </a>
+</div>
+
+<!-- Font Awesome pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
