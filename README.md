@@ -15,3 +15,27 @@ Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate a
 Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 7 at https://youtu.be/Tu3lBxlFBlM
 
 Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 8 at https://youtu.be/KKjKFLKlCbc
+---
+
+# 🏦 ProjetJeeBank – Application web de gestion bancaire
+
+Application web de gestion bancaire développée en binôme (Ines Anane & Asma Hammami) dans le cadre d'un projet académique à Polytech Intl.
+
+## Fonctionnalités
+- Gestion des clients (ajout, modification, suppression)
+- Gestion des comptes bancaires (courant / épargne)
+- Opérations : dépôts, retraits et historique des transactions
+- Gestion des cartes bancaires
+- Demandes de crédit avec suivi du statut (validation / refus)
+- Espace administrateur et authentification sécurisée
+
+## Technologies
+Java · Spring Boot · Spring MVC · Spring Data JPA · Hibernate · Spring Security · Thymeleaf · HTML · CSS · JavaScript · MySQL · Maven
+
+## Documentation
+- 📄 [Rapport du projet](Rapport_Projet_JEE.pdf)
+- 📊 [Présentation](Presentation_Projet_JEE.pdf)
+
+## Auteurs
+- Ines Anane
+- Asma Hammami
