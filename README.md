@@ -1,8 +1,9 @@
 # 🏦 ProjetJeeBank – Application web de gestion bancaire
 
-Application web de gestion bancaire développée en binôme (Ines Anane & Asma Hammami) dans le cadre d'un projet académique à Polytech Intl.
+Application web de gestion bancaire développée en binôme (**Ines Anane** & **Asma Hammami**) dans le cadre d'un projet académique à **Polytech Intl**, sous la supervision de **M. Hassen Lazreg**.
 
 ## Fonctionnalités
+
 - Gestion des clients (ajout, modification, suppression)
 - Gestion des comptes bancaires (courant / épargne)
 - Opérations : dépôts, retraits et historique des transactions
@@ -11,33 +12,28 @@ Application web de gestion bancaire développée en binôme (Ines Anane & Asma H
 - Espace administrateur et authentification sécurisée
 
 ## Technologies
+
 Java · Spring Boot · Spring MVC · Spring Data JPA · Hibernate · Spring Security · Thymeleaf · HTML · CSS · JavaScript · MySQL · Maven
 
 ## Documentation
-- 📄 [Rapport du projet](Rapport_Projet_JEE.pdf)
-- 📊 [Présentation](Presentation_Projet_JEE.pdf)
+
+- 📄 [Rapport du projet](https://github.com/inesanane2001-sys/ProjetJeeBank/blob/main/Rapport_Projet_JEE.pdf)
+- 📊 [Présentation](https://github.com/inesanane2001-sys/ProjetJeeBank/blob/main/Presentation_Projet_JEE.pdf)
 
 ## Auteurs
+
 - Ines Anane
 - Asma Hammami
 
-# YouTube Tutorial Series - Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL
+## Ressources utilisées
 
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 1 at https://youtu.be/Hk70e7KR290
+Série de tutoriels YouTube : *Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL*
 
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 2 at https://youtu.be/JE7KaTIF1Z4
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 3 at https://youtu.be/VqitTIMG5uI
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 4 at https://youtu.be/uS8zA3W8p5s
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 5 at https://youtu.be/hPCynjmapSo
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 6 at https://youtu.be/hE_STc3eWzE
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 7 at https://youtu.be/Tu3lBxlFBlM
-
-Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 8 at https://youtu.be/KKjKFLKlCbc
----
-
-
+- [Partie 1](https://youtu.be/Hk70e7KR290)
+- [Partie 2](https://youtu.be/JE7KaTIF1Z4)
+- [Partie 3](https://youtu.be/VqitTIMG5uI)
+- [Partie 4](https://youtu.be/uS8zA3W8p5s)
+- [Partie 5](https://youtu.be/hPCynjmapSo)
+- [Partie 6](https://youtu.be/hE_STc3eWzE)
+- [Partie 7](https://youtu.be/Tu3lBxlFBlM)
+- [Partie 8](https://youtu.be/KKjKFLKlCbc)
